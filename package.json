@@ -1,0 +1,70 @@
+{
+	"name": "@sucklessco/slvideo.js",
+	"version": "0.0.1",
+	"description": "An HTML5 video player with a common API and skin.",
+	"main": "./dist/slvideo.js",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "npm-run-all clean build:dev zip",
+		"build:css": "sass --load-path='./' --no-source-map src/css/slvideojs.scss dist/slvideojs.css",
+		"build:dev": "npm-run-all build:js build:css",
+		"build:js": "rollup -c",
+		"build:svg": "svg-sprite --config ./svg-sprite.config.json src/svg/*.svg",
+		"clean": "shx rm -rf ./dist",
+		"cover": "jest --collect-coverage",
+		"lint": "eslint .",
+		"minify": "npm-run-all minify:*",
+		"minify:css": "cleancss dist/slvideojs.css -o dist/slvideojs.min.css",
+		"minify:js": "uglifyjs dist/slvideo.js -o dist/slvideo.min.js -c -m",
+		"publish": "node build/gh-release.js",
+		"serve": "serve",
+		"start": "npm-run-all -p watch serve",
+		"test": "jest",
+		"watch": "npm-run-all -p watch:*",
+		"watch:css": "npm run build:css -- --watch",
+		"watch:rollup": "rollup -c -w --no-progress",
+		"zip": "cd dist && cross-env bestzip \"./slvideojs-${npm_package_version}.zip\" * && cd .."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sucklessco/slvideo.js.git"
+	},
+	"keywords": [
+		"html5",
+		"player",
+		"videoplayer",
+		"suckless",
+		"slvideo.js"
+	],
+	"author": "Marco Kellershoff",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/sucklessco/slvideo.js/issues"
+	},
+	"homepage": "https://sucklessco.github.io/slvideo.js/",
+	"devDependencies": {
+		"@babel/core": "^7.10.2",
+		"@babel/plugin-transform-modules-commonjs": "^7.10.4",
+		"@babel/preset-env": "^7.10.3",
+		"@rollup/plugin-babel": "^5.0.3",
+		"@rollup/plugin-json": "^4.1.0",
+		"bestzip": "^2.1.5",
+		"clean-css": "^4.2.3",
+		"cross-env": "^7.0.2",
+		"dotenv": "^8.2.0",
+		"eslint": "^7.3.0",
+		"eslint-config-prettier": "^6.11.0",
+		"esm": "^3.2.25",
+		"gh-release": "^3.5.0",
+		"jest": "^26.1.0",
+		"npm-run-all": "^4.1.5",
+		"rollup": "^2.17.1",
+		"sass": "^1.26.8",
+		"serve": "^11.3.2",
+		"shx": "^0.3.2",
+		"svg-sprite": "^1.5.0",
+		"uglify-js": "^3.9.4"
+	}
+}

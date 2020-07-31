@@ -1,0 +1,9 @@
+{
+	"mode": {
+		"symbol": {
+			"inline": true,
+			"dest": "dist",
+			"sprite": "slvideojs-icons.svg"
+		}
+	}
+}

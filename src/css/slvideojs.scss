@@ -1,0 +1,25 @@
+div.slvideojs {
+	align-items: center;
+	background-color: #000;
+	display: flex;
+	max-width: 100%;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+
+	.ui-container {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		z-index: 200;
+		overflow: hidden;
+	}
+
+	video {
+		display: block;
+		max-width: 100%;
+		pointer-events: none;
+		width: 100%;
+	}
+
+}
